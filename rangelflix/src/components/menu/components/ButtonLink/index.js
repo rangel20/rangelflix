@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ButtonLink = ({ className, href, children }) => {
   return (
@@ -6,6 +7,17 @@ const ButtonLink = ({ className, href, children }) => {
       {children}
     </a>
   );
+};
+
+ButtonLink.defaultProps = {
+  href: '/',
+  className: '',
+};
+
+ButtonLink.propTypes = {
+  className: PropTypes.string,
+  href: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default ButtonLink;
