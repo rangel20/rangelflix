@@ -23,7 +23,7 @@ const CadastroCategoria = () => {
   const handleChange = ({ target: { name, value } }) => setValue(name, value);
 
   useEffect(() => {
-    console.log('Show!!');
+    alert('Show!!');
     const URL_TOP = 'http://localhost:8080/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServidor) => {
