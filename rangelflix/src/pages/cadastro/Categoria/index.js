@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -10,7 +10,7 @@ const CadastroCategoria = () => {
     descricao: '',
     cor: '#000',
   };
-  const [categorias, setCategoria] = useState([]);
+  const [categorias, setCategorias] = useState([]);
   const [values, setValues] = useState(valoresIniciais);
 
   const setValue = (chave, valor) => {
@@ -22,6 +22,30 @@ const CadastroCategoria = () => {
 
   const handleChange = ({ target: { name, value } }) => setValue(name, value);
 
+  useEffect(() => {
+    console.log('Show!!');
+
+    fetch('');
+
+    // setTimeout(() => {
+    //   setCategorias([
+    //     ...categorias,
+    //     {
+    //       id: 1,
+    //       nome: 'Front End',
+    //       descricao: 'Uma categoria show bacanudassa',
+    //       cor: '#cbd1ff',
+    //     },
+    //     {
+    //       id: 2,
+    //       nome: 'Back End',
+    //       descricao: 'Outra categoria show bacanudassa',
+    //       cor: '#cbd1ff',
+    //     },
+    //   ]);
+    // }, 4 * 1000);
+  }, []);
+
   return (
     <PageDefault>
       <h1>
@@ -32,7 +56,7 @@ const CadastroCategoria = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setCategoria([...categorias, values]);
+          setCategorias([...categorias, values]);
           setValues(valoresIniciais);
         }}
       >
@@ -62,6 +86,12 @@ const CadastroCategoria = () => {
 
         <Button>Cadastrar</Button>
       </form>
+
+      {categorias.length === 0 && (
+        <div>
+          Loading...
+        </div>
+      )}
 
       <ul>
         {categorias.map((categoria) => (
