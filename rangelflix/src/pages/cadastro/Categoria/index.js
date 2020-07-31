@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 const CadastroCategoria = () => {
   const valoresIniciais = {
@@ -23,10 +24,12 @@ const CadastroCategoria = () => {
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {values.nome}</h1>
+      <h1>
+        Cadastro de Categoria:
+        {values.nome}
+      </h1>
 
       <form
-        // style={{ backgroundColor: nomeDaCategoria }}
         onSubmit={(e) => {
           e.preventDefault();
           setCategoria([...categorias, values]);
@@ -43,7 +46,7 @@ const CadastroCategoria = () => {
 
         <FormField
           label="Descrição"
-          type="text"
+          type="textarea"
           name="descricao"
           value={values.descricao}
           onChange={handleChange}
@@ -76,11 +79,12 @@ const CadastroCategoria = () => {
           </label>
         </div> */}
 
-        <button>Cadastrar</button>
+        <Button>Cadastrar</Button>
       </form>
 
       <ul>
         {categorias.map((categoria, indice) => (
+          // eslint-disable-next-line react/no-array-index-key
           <li key={`${categoria}${indice}`}>{categoria.nome}</li>
         ))}
       </ul>
