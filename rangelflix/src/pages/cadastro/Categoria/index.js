@@ -60,32 +60,12 @@ const CadastroCategoria = () => {
           onChange={handleChange}
         />
 
-        {/* <div>
-          <label>
-            Descrição:
-            <textarea
-              type="text"
-              name="descricao"
-              value={values.descricao}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Cor:
-            <input type="color" name="cor" value={values.cor} onChange={handleChange} />
-          </label>
-        </div> */}
-
         <Button>Cadastrar</Button>
       </form>
 
       <ul>
-        {categorias.map((categoria, indice) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={`${categoria}${indice}`}>{categoria.nome}</li>
+        {categorias.map((categoria) => (
+          <li key={`${categoria.nome}`}>{categoria.nome}</li>
         ))}
       </ul>
 
