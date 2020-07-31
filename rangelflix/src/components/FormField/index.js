@@ -110,7 +110,6 @@ FormField.defaultProps = {
 };
 
 FormField.propTypes = {
-  // as: PropTypes.string,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
