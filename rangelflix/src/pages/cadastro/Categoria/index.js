@@ -23,14 +23,13 @@ const CadastroCategoria = () => {
   const handleChange = ({ target: { name, value } }) => setValue(name, value);
 
   useEffect(() => {
-    const URL_TOP = 'https://rangelflix.herokuapp.com/categorias';
-    fetch(URL_TOP)
-      .then(async (respostaDoServidor) => {
-        const respota = await respostaDoServidor.json();
-        setCategorias([
-          ...respota,
-        ]);
-      });
+    const URL_TOP = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://rangelflix.herokuapp.com/categorias';
+    fetch(URL_TOP).then(async (respostaDoServidor) => {
+      const respota = await respostaDoServidor.json();
+      setCategorias([...respota]);
+    });
 
     // setTimeout(() => {
     //   setCategorias([
@@ -81,22 +80,12 @@ const CadastroCategoria = () => {
           onChange={handleChange}
         />
 
-        <FormField
-          label="Cor"
-          type="color"
-          name="cor"
-          value={values.cor}
-          onChange={handleChange}
-        />
+        <FormField label="Cor" type="color" name="cor" value={values.cor} onChange={handleChange} />
 
         <Button>Cadastrar</Button>
       </form>
 
-      {categorias.length === 0 && (
-        <div>
-          Loading...
-        </div>
-      )}
+      {categorias.length === 0 && <div>Loading...</div>}
 
       <ul>
         {categorias.map((categoria) => (
