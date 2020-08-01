@@ -23,8 +23,7 @@ const CadastroCategoria = () => {
   const handleChange = ({ target: { name, value } }) => setValue(name, value);
 
   useEffect(() => {
-    alert('Show!!');
-    const URL_TOP = 'http://localhost:8080/categorias';
+    const URL_TOP = 'https://rangelflix.herokuapp.com/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServidor) => {
         const respota = await respostaDoServidor.json();
